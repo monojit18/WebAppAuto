@@ -1,0 +1,34 @@
+-rg eretail_workshop_rg -app eretail-web-BB -file TestNetCoreAPI.zip
+
+./web-create.ps1 -cust BB2 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB3 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB4 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB5 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB6 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB7 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB8 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB9 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB10 -rg eretail_workshop_rg
+./web-create.ps1 -cust BB11 -rg eretail_workshop_rg
+
+
+4VBNT3ObQr2xkJnlgAVyp]Q4gXCTO+@_
+ce755a11-7fe9-46b5-8bea-eb7e102c7384
+bbe9b0ad-f1c1-4242-87f9-f22d7621beea
+
+$azureAplicationId ="ce755a11-7fe9-46b5-8bea-eb7e102c7384"
+$azureTenantId= "bbe9b0ad-f1c1-4242-87f9-f22d7621beea"
+$azurePassword = ConvertTo-SecureString "4VBNT3ObQr2xkJnlgAVyp]Q4gXCTO+@_" -AsPlainText -Force
+$psCred = New-Object System.Management.Automation.PSCredential($azureAplicationId , $azurePassword)
+Connect-AzAccount -Credential $psCred -TenantId $azureTenantId  -ServicePrincipal 
+#I just test to get all groups, you could do other operations
+Get-AzADGroup 
+
+
+
+$passwd = ConvertTo-SecureString testpwd -AsPlainText -Force
+$pscredential = New-Object System.Management.Automation.PSCredential('testprincipal/id', $passwd)
+Connect-AzAccount -ServicePrincipal -Credential $pscredential -TenantId $tenantId
+
+$pscredential = Get-Credential
+Connect-AzAccount -ServicePrincipal -Credential $pscredential -TenantId $tenantId
